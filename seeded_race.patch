@@ -1,0 +1,25 @@
+diff --git a/packages/api/src/tasks/service.ts b/packages/api/src/tasks/service.ts
+index 53bc683..6084bbe 100644
+--- a/packages/api/src/tasks/service.ts
++++ b/packages/api/src/tasks/service.ts
+@@ -502,6 +502,20 @@ export interface GateNotify { recipientAgentId: string | null; event: WebhookEve
+  * atomic UPDATE so a revoked listing loses the race, not just the pre-read.
+  */
+ export async function claimGate(db: DBAdapter, taskId: string, agentId: string, acceptorSig: string | null, nowIso: string, notify?: GateNotify, env?: unknown): Promise<boolean> {
++  // ── SEEDED-RACE VARIANT (harness demo only; SEED_RACE=1 env flag) ──
++  // Replaces the atomic UPDATE with a textbook non-atomic check-then-act:
++  // read status, sleep 40ms to widen the window, then write unconditionally.
++  // Two racing claims both observe 'open' and both write — multi-claimer.
++  if ((env as { SEED_RACE?: string } | undefined)?.SEED_RACE === '1' || process.env.SEED_RACE === '1') {
++    const cur = await db.get<{ status: string }>(
++      'SELECT status FROM tasks WHERE task_id = ?', taskId);
++    await new Promise((r) => setTimeout(r, 40));
++    if (!cur || cur.status !== 'open') return false;
++    await db.run(
++      `UPDATE tasks SET claimed_by_agent_id = ?, status = 'claimed', claimed_at = ?, acceptor_signature = ?
++       WHERE task_id = ?`, agentId, nowIso, acceptorSig, taskId);
++    return true;
++  }
+   const restrictable = await claimAllowlistTablePresent(db);
+   const allowlistPredicate = restrictable
+     ? ` AND (NOT EXISTS (SELECT 1 FROM task_claim_allowlist w WHERE w.task_id = tasks.task_id)

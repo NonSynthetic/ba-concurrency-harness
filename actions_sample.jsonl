@@ -1,0 +1,4 @@
+{"ts": "2026-10-25T19:11:09.184248Z", "op": "register", "ok": false, "info": "(400, {'error': 'bad_request', 'message': 'Validation failed', 'details': {'formErrors': [], 'fieldErrors': {'challenge_"}
+{"ts": "2026-10-25T19:11:10.738670Z", "op": "register", "ok": false, "info": "(400, {'error': 'bad_request', 'message': 'Validation failed', 'details': {'formErrors': [], 'fieldErrors': {'challenge_...
+t": "ag_2etvDLGiAm82fVGgqR1DDBEFwszoW7hVJQtY4va8NbdM", "http": 429, "ms": 17, "err": "rate_limited"}
+{"ts": "2026-10-25T19:58:18.404504Z", "op": "accept", "task": "task_1au08IBVIZFnASsWHJvCq", "agent": "ag_7AobJXyjDrNTZ9RFwLgdiReyHDU5LPRv1vc4WKSUCoH6", "http": 429, "ms": 2, "err": "rate_limited"}
