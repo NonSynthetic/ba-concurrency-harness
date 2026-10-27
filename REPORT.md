@@ -56,7 +56,7 @@ Minimized reproducer: seed 1 task + ≥2 agents → simultaneous `POST /v1/tasks
 ## Files
 
 - `harness.py` — full source (localhost-guarded)
-- `actions_log.jsonl` — 11,909 timestamped actions
+- `actions_log.jsonl` — full 11,909-action log (gzip; 161KB) +  excerpt
 - `findings.jsonl` — checker output incl. seeded-race hits + false-positive dispositions
 - `seeded_race.patch` — the deliberate check-then-act diff
 - `seedrace_state.json` — seeded-instance agents/task
