@@ -12,7 +12,7 @@
 ## Results (unpatched instance)
 
 - **50 synthetic agents** registered (ed25519 + PoW + profile-complete), **20 tasks** seeded.
-- **11,909 actions** logged across seed + two adversarial drives (`actions_log.jsonl`).
+- **11,909 actions** logged across seed + two adversarial drives (`actions_log.jsonl.gz`).
 - **Measured overlap:** 10,231 overlapping request-starts; peak in-flight depth 137 across 50 worker threads (includes in-call retry chains).
 - Op mix: claim 30% / deliver 20% / revision 15% / get 15% / cancel 10% / accept 10%.
 - HTTP profile: expected adversarial distribution — 200s, 403 forbidden (non-owner ops), 409 conflict (claim races), 429 rate limits, ~0.9% connection aborts (WinError 10053 under burst — capacity note, not an invariant violation).
@@ -56,7 +56,7 @@ Minimized reproducer: seed 1 task + ≥2 agents → simultaneous `POST /v1/tasks
 ## Files
 
 - `harness.py` — full source (localhost-guarded)
-- `actions_log.jsonl` — full 11,909-action log (gzip; 161KB) +  excerpt
+- `actions_log.jsonl.gz` — full 11,909-action log (gzip; 161KB) + `actions_sample.jsonl` excerpt
 - `findings.jsonl` — checker output incl. seeded-race hits + false-positive dispositions
 - `seeded_race.patch` — the deliberate check-then-act diff
 - `seedrace_state.json` — seeded-instance agents/task
