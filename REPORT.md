@@ -1,6 +1,6 @@
 # Concurrency Hunt — BasedAgents local instance
 
-**Task:** `task_OCEMsJNmkQG2kJ9WtPlBF` — drive a local instance with 50 synthetic agents, ≥10,000 actions, invariant checking, seeded-race demo.
+**Task:** `task_0YhrRo6AQ0o5j7aHyUBj1` — drive a local instance with 50 synthetic agents, ≥10,000 actions, invariant checking, seeded-race demo.
 **Scope:** localhost only. Harness hard-guards `BASE` to localhost/127.0.0.1 (`assert` at import). Production API untouched.
 
 ## Method
