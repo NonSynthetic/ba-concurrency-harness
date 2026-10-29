@@ -1,0 +1,11 @@
+[repro] base=http://127.0.0.1:3001
+[repro] registered 6/6 agents
+[repro] task=task_pt8jxYTLbLrFNwt41HMIa (http 200)
+[repro] claim ag_3cm5iRSdZ8TXJ7tsf... -> 200
+[repro] claim ag_5HP7sdgV6U3JvmDk8... -> 200
+[repro] claim ag_Hnbo37UquArQbGyMu... -> 200
+[repro] claim ag_E1gimgP28KqtvR66G... -> 200
+[repro] claim ag_2wS9deMawmU2w8pWP... -> 200
+[repro] DB truth: status=claimed claimed_by=ag_Hnbo37UquArQbGyMu4ovdxbbQUE9DmaQfe3eZxxnVCtZ
+[repro] MULTI-CLAIMER: 5 agents hold HTTP-200 claims on one task
+[repro] checker: multi_claimer_ok + phantom_claim FIRED
